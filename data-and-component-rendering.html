@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>React Practice</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!--
+      INSTRUCTIONS:
+
+      This time, we assembled the data for you,
+      and built the component you need to display and individual band member.
+
+      But the Band component doesn't return anything yet.
+
+      1) Make the band component map over each of the bandMembers.
+      2) Pass each individual band member's data down to a Beatle component as props
+      3) Dont forget to add a unique key for each band member.
+
+      Make sure you can see each Beatle on the screen,
+      and that there are no errors in console.
+     -->
+    <script type="text/babel">
+      const bandMembers = [
+                            {
+                              name:       "John",
+                              instrument: "Guitar"
+                            },
+                            {
+                              name:       "George",
+                              instrument: "Guitar"
+                            },
+                            {
+                              name:       "Paul",
+                              instrument: "Bass"
+                            },
+                            {
+                              name:       "Ringo",
+                              instrument: "Drums"
+                            }
+                          ]
+
+      const Beatle = (props) => {
+        return(
+          <h1>My name is {props.name} and I play the {props.instrument}</h1>
+        )
+      }
+
+      const Band = () => {
+        return(
+          <div>
+            {
+              bandMembers.map((member, index) => <Beatle {...member} key={index}/>)
+            }
+          </div>
+        )
+      }
+
+      ReactDOM.render(<Band/>, document.getElementById('root'))
+    </script>
+  </body>
+</html>
